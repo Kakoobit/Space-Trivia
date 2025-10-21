@@ -1,0 +1,97 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.spinnaker-regular {
+  font-family: "Spinnaker", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  background-image: url("back.png");
+  background-size: cover;
+}
+.flexx {
+  color: white;
+  background-color: #2E294E; 
+  padding: 16px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top:0;
+} 
+  #xd {
+    height: auto;
+    } 
+  #idk {
+    color: white;
+    font-size: 30px;
+    }
+
+body{
+  justify-content: center;
+  align-items: center
+}
+h2 a {
+  text-decoration: none;
+  color: white;
+}
+h2 a:hover {
+  color: #BE97C6;
+}
+h1{
+  font-size: 70px;
+  margin-top: 130px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white
+}
+button{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  background-color:#BE97C6;
+  padding:5px;
+  border:0px;
+}
+button:hover{
+  color:white;
+  background-color: black;
+}
+nav {
+  text-align: center;
+  color: white
+}
+
+.white {
+  color: black;
+  background-color:white;
+  padding: 30px;
+  margin-top: 170px;
+  text-align: left;
+}
+.black {
+  text-align: right;
+  color: white;
+  background-color:black;
+  padding: 30px;
+  margin-top: 50px;
+}
+.white2 {
+  color: black;
+  background-color:white;
+  padding: 30px;
+  margin-top: 50px;
+  text-align: left;
+}
+
+
