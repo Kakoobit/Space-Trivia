@@ -13,8 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Spinnaker&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="index1.css">
-
+  <link rel="stylesheet" href="index2.css">
 
   <script src="/script.js" defer> </script>
 </head>
@@ -30,14 +29,26 @@
     </h2>
 
 <body> 
-    <nav>
-    <h1 class= "bebas-neue-regular">Welcome to Space Trivia</h1>
-    <h3 class="spinnaker-regular">Your portal to learning about the fascinating world of space and aerospace technology.</h3>
-    <a href="https://nasa.gov" target="_blank">
-        <button id="lm" class="bebas-neue-regular">Click here to start</button>
-    </a>
-  </nav>
-  
+  <div class= "container">
+    <div class="spinbutton" style="color: rgb(85, 23, 0);">Spin
+        <img id= "rocket" src= "rocket.png" style= width:50px alt= 'the logo'>
+    </div>
+    <div class="wheel">
+        <div class="number" style="--i:1;--clr:#db7093;
+        "><span>Mercury</span></div>
+        <div class="number" style="--i:2;--clr:#00add0;
+        "><span>Venus</span></div>
+        <div class="number" style="--i:4;--clr:#dbc970;
+        "><span>Mars</span></div>
+        <div class="number" style="--i:5;--clr:#4b1fde;
+        "><span>Jupiter</span></div>
+        <div class="number" style="--i:6;--clr:#46c011;
+        "><span>Saturn</span></div>
+        <div class="number" style="--i:7;--clr:#e61f1f;
+        "><span>Uranus</span></div>
+        <div class="number" style="--i:8;--clr:#ffaa29;
+        "><span>Neptune</span></div>
+    </div>
 </body>
 
 </html>

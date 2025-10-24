@@ -1,0 +1,90 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+.bebas-neue-regular {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.spinnaker-regular {
+  font-family: "Spinnaker", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+  background-image: url("solarr.jpg");
+  background-size: cover;
+}
+.flexx {
+  color: rgb(255, 255, 255);
+  background-color: #2E294E; 
+  padding: 16px;
+  align-items: center;
+  position: fixed; 
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top:0;
+} 
+  #xd {
+    height: auto;
+    } 
+  #idk {
+    color: white;
+    font-size: 30px;
+    }
+h2 a {
+  text-decoration: none;
+  color: white;
+}
+h2 a:hover {
+  color: #BE97C6;
+}
+
+.container {
+    position: relative;  
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.container .spinbutton {
+    position: absolute;
+    width: 60px;
+    height: 60px;;
+    background-color: rgb(21, 80, 167);
+    border-radius: 50%;
+    z-index: 10;
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+    align-items: center;    
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 1200;
+    font-style: normal;
+    letter-spacing: 0.01em;
+    border: 6px solid rgb(179, 255, 255);
+    cursor: pointer;
+    user-select: none;
+}
+
+.container .spinbutton::before{
+    content: '';
+    position: absolute;
+    top: -20px;
+    width: 20px;
+    height: 30px;
+}
+
+    #rocket {
+    position: absolute;             
+    left: 50%;
+    transform: translateX(-50%);       
+    bottom: calc(50% + 80px/2 + 8px); 
+}
