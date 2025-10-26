@@ -131,7 +131,6 @@ body::before{
         left: 50%;
         transform: translateX(-50%);
         z-index: 20;
-    
 }
 
     #earth {
@@ -141,23 +140,60 @@ body::before{
         object-fit: cover;
         cursor: pointer;
     }
-
-.container .wheel{
-    position: absolute;
-    inset: 0;
-    top: 0;
-    left: 0;
-    background: #444;
-    background: transparent;
-    border-radius: 50%;
-    box-shadow: 0 0 5px #ffffff, 0 0 10px #676767 inset;
+    
+  .orbit .wheel{
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: 0 0 5px #ffffff, 0 0 10px #676767 inset;
 }
+
 .stage {                             
   position: relative;
   height: calc(100vh - 80px);         
   margin-top: 80px;                 
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;                 
+}
+
+.planet {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform:
+    rotate(calc(360deg / var(--n) * var(--i)))
+    translate(var(--r))
+    rotate(calc(-360deg / var(--n) * var(--i)));
+  transform-origin: center;
+}
+
+.planet img {
+  position: absolute;
+  left: 50%;                  
+  top: 50%;   
+  width: var(--psize);
+  height: var(--psize);
+  transform: translate(-50%, -50%);
+  object-fit: contain;
+  border-radius: 50%;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
+  user-select: none;
+  pointer-events: none;
+}
+
+.orbit{
+  --n: 7;                 
+  --orbitSize: 530px;  
+  --psize: 120px;         
+  --r: calc(var(--orbitSize) / 2 - var(--psize) / 2); 
+
+  position: relative;
+  width: var(--orbitSize);
+  aspect-ratio: 1 / 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 
