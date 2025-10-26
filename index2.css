@@ -92,10 +92,10 @@ body::before{
 }
 
 .container .spinbutton {
-    position: absolute;
-    width: 60px;
-    height: 60px;;
-    background-color: rgb(21, 80, 167);
+    position: relative;
+    width: 100px;
+    height: 100px;;
+    background-color: none;
     border-radius: 50%;
     z-index: 10;
     display: flex;
@@ -105,8 +105,7 @@ body::before{
     font-weight: 1200;
     font-style: normal;
     letter-spacing: 0.01em;
-    border: 6px solid rgb(179, 255, 255);
-    cursor: pointer;
+    border: none;
     user-select: none;
 }
 
@@ -118,12 +117,30 @@ body::before{
     height: 30px;
 }
 
-    #rocket {
-    position: absolute;             
-    left: 50%;
-    transform: translateX(-50%);       
-    bottom: calc(50% + 80px/2 + 8px); 
+.spinbutton span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
 }
+    #rocket {
+        position: absolute;
+        width: 40px;
+        bottom: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 20;
+    
+}
+
+    #earth {
+        width: 200%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+    }
 
 .container .wheel{
     position: absolute;
@@ -142,3 +159,5 @@ body::before{
   display: flex; align-items: center; justify-content: center;
   overflow: hidden;                 
 }
+
+
