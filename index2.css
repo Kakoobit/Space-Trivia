@@ -150,11 +150,13 @@ body::before{
 }
 
 .stage {                             
-  position: relative;
-  height: calc(100vh - 80px);         
-  margin-top: 80px;                 
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;                 
+    height: calc(100vh - 80px);  
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 0 32px;                
 }
 
 .planet {
@@ -194,6 +196,30 @@ body::before{
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 0 0 auto;
+  margin-left: auto;
+  margin-left: auto;
+  transform: translate(-120px, -60px); 
 }
 
+/*izqqq*/
 
+.instructions{
+  flex: 1 1 420px;           
+  max-width: 560px;
+  color: #fff;
+  background: rgba(46, 41, 78, .55);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 16px;
+  padding: 16px 50px;
+  line-height: 1.5;
+  flex-direction: column;
+  justify-content: center; 
+  transform: translateX(60px);
+}
+.instructions h3{
+  margin: 0 0 10px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  letter-spacing: .5px;
+}
