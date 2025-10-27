@@ -226,3 +226,39 @@ body::before{
   font-size: 28px;
   letter-spacing: .5px;
 }
+
+#pop{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -25%) scale(.95);
+  background: rgba(20,20,35,.92);
+  color: #fff;
+  padding: 35px 40px;
+  border-radius: 50px;
+  border: 1px solid rgba(255,255,255,.18);
+  box-shadow: 0 10px 30px rgba(0,0,0,.35);
+  backdrop-filter: blur(3px);
+  font: 700 20px "Bebas Neue", sans-serif;
+  letter-spacing: .5px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 3000;
+}
+
+/* animaciones */
+#pop.show{
+  animation: pop-in .35s ease-out forwards,
+             pop-out .35s ease-in forwards 2.2s; /* se oculta solo */
+}
+
+@keyframes pop-in{
+  from{ opacity:0; transform: translate(-50%,-10%) scale(.9); }
+  to  { opacity:1; transform: translate(-50%,-25%) scale(1); }
+}
+@keyframes pop-out{
+  to{ opacity:0; transform: translate(-50%,-40%) scale(.98); }
+}

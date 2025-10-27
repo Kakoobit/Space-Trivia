@@ -4,30 +4,32 @@
   const planets = document.querySelectorAll('.wheel .planet');
   const N = planets.length;
 
-  // Configuración
-  const fullTurns  = 5;                          // vueltas completas
-  const durationMs = 4000;                       // duración del giro
-  const ease       = 'cubic-bezier(.2,.8,.2,1)'; // ease-out suave
+  const fullTurns  = 5;  
+  const durationMs = 4000;
+  const ease       = 'cubic-bezier(.2,.8,.2,1)';
 
-  // Dónde debe quedar el planeta elegido:
-  const landingAngleDeg = -90;    // arriba (12 en punto)
-  const fineOffsetDeg   =  -25;    // <-- AJUSTA aquí (+ / -) hasta que quede perfecto
+  const landingAngleDeg = -90; 
+  const fineOffsetDeg   = -25;
 
   let spinning = false;
-  let currentRotation = 0; // [0,360)
+  let currentRotation = 0; 
   const slice = 360 / N;
 
   const to0_360 = deg => (deg % 360 + 360) % 360;
   const forwardDelta = (from, to) => to0_360(to - from);
 
+  // === funciones auxiliares ===
+  function deg(a) { return a * 180 / Math.PI; }
+  function center(el) {
+    const r = el.getBoundingClientRect();
+    return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+  }
+
   function spinToIndex(index) {
     if (spinning) return;
     spinning = true;
 
-    // Queremos: (slice*index - R) == landingAngleDeg + fineOffsetDeg
-    // => R = slice*index - (landingAngleDeg + fineOffsetDeg)
     const desired = slice * index - (landingAngleDeg + fineOffsetDeg);
-
     const fwd = forwardDelta(currentRotation, desired);
     const newRotation = currentRotation + fullTurns * 360 + fwd;
 
@@ -40,19 +42,40 @@
       currentRotation = to0_360(newRotation);
       spinning = false;
 
-      const chosenAlt = planets[index]?.querySelector('img')?.alt ?? `index ${index}`;
-      console.log('Planeta final:', chosenAlt);
+      const { x: cx, y: cy } = center(wheel);
+      const landingDeg = -90 + fineOffsetDeg;
+      let bestIdx = 0;
+      let bestDelta = Infinity;
+
+      planets.forEach((p, i) => {
+        const img = p.querySelector('img');
+        const { x, y } = center(img);
+        const a = deg(Math.atan2(y - cy, x - cx));
+        let d = Math.abs(((a - landingDeg + 540) % 360) - 180);
+        if (d < bestDelta) { bestDelta = d; bestIdx = i; }
+      });
+
+      const planetEl = planets[bestIdx].querySelector('img');
+      const planetName = planetEl?.alt ?? `Planet ${bestIdx}`;
+
+      showPopup(planetName);
     };
+
     wheel.addEventListener('transitionend', onEnd, { once: true });
   }
 
   spinBtn.addEventListener('click', () => {
     if (spinning) return;
-    // elegimos un planeta al azar directamente (sin ángulos intermedios)
-    const index = Math.floor(Math.random() * N); // 0..N-1
+    const index = Math.floor(Math.random() * N);
     spinToIndex(index);
   });
-
-  // Para probar un índice concreto:
-  // spinToIndex(0);
 })();
+
+function showPopup(message){
+  const pop = document.getElementById('pop');
+  const txt = document.getElementById('pop-text');
+  txt.textContent = `🚀 Let's go to ${message}!`;
+  pop.classList.remove('show');
+  void pop.offsetWidth;
+  pop.classList.add('show');
+}
