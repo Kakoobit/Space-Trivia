@@ -1,38 +1,58 @@
-var factList = [
-  "The first human-made object to reach space was the V-2 rocket in 1944.",
-  "The Moon is Earth's only natural satellite and the fifth largest moon in the Solar System.",
-  "The Hubble Space Telescope has been orbiting Earth since 1990.",
-  "Neil Armstrong and Buzz Aldrin were the first humans to walk on the Moon during Apollo 11 in 1969.",
-  "Mars has the largest volcano in the Solar System, Olympus Mons.",
-  "The Voyager 1 spacecraft is the farthest human-made object from Earth, launched in 1977.",
-  "Jupiter has 79 known moons, the most of any planet in our Solar System.",
-  "The International Space Station (ISS) has been continuously inhabited since November 2000.",
-  "Saturn's rings are made of ice and rock particles ranging in size from dust to mountains.",
-  "SpaceX's Falcon Heavy is the most powerful operational rocket as of 2024.",
-  "Venus rotates in the opposite direction to most planets in the Solar System.",
-  "The Sun accounts for 99.86% of the mass of the entire Solar System.",
-  "Pluto was reclassified from a planet to a dwarf planet in 2006.",
-  "The James Webb Space Telescope was launched in 2021 to study the early universe.",
-  "The Milky Way galaxy is estimated to contain 100–400 billion stars.",
-  "The first artificial satellite, Sputnik 1, was launched by the Soviet Union in 1957.",
-  "A day on Venus is longer than a year on Venus due to its slow rotation.",
-  "The Kuiper Belt is a region of the Solar System beyond Neptune, home to dwarf planets like Pluto.",
-  "The Mars Rover Perseverance landed on Mars in 2021 to search for signs of ancient life.",
-  "xd",
-]
+(() => {
+  const wheel   = document.querySelector('.wheel');
+  const spinBtn = document.querySelector('.spinbutton');
+  const planets = document.querySelectorAll('.wheel .planet');
+  const N = planets.length;
 
-var fact = document.getElementById('fact');
-var factBu = document.getElementById('factBu');
-var count=0;
+  // Configuración
+  const fullTurns  = 5;                          // vueltas completas
+  const durationMs = 4000;                       // duración del giro
+  const ease       = 'cubic-bezier(.2,.8,.2,1)'; // ease-out suave
 
-if (factBu) {
-  factBu.addEventListener('click',displayFact);
-}
+  // Dónde debe quedar el planeta elegido:
+  const landingAngleDeg = -90;    // arriba (12 en punto)
+  const fineOffsetDeg   =  -25;    // <-- AJUSTA aquí (+ / -) hasta que quede perfecto
 
-function displayFact(){
-  fact.innerHTML= factList[count];
-  count++;
-  if(count==factList.length) {
-    count=0
+  let spinning = false;
+  let currentRotation = 0; // [0,360)
+  const slice = 360 / N;
+
+  const to0_360 = deg => (deg % 360 + 360) % 360;
+  const forwardDelta = (from, to) => to0_360(to - from);
+
+  function spinToIndex(index) {
+    if (spinning) return;
+    spinning = true;
+
+    // Queremos: (slice*index - R) == landingAngleDeg + fineOffsetDeg
+    // => R = slice*index - (landingAngleDeg + fineOffsetDeg)
+    const desired = slice * index - (landingAngleDeg + fineOffsetDeg);
+
+    const fwd = forwardDelta(currentRotation, desired);
+    const newRotation = currentRotation + fullTurns * 360 + fwd;
+
+    wheel.style.transition = `transform ${durationMs}ms ${ease}`;
+    wheel.style.transform  = `rotate(${newRotation}deg)`;
+
+    const onEnd = () => {
+      wheel.removeEventListener('transitionend', onEnd);
+      wheel.style.transition = 'none';
+      currentRotation = to0_360(newRotation);
+      spinning = false;
+
+      const chosenAlt = planets[index]?.querySelector('img')?.alt ?? `index ${index}`;
+      console.log('Planeta final:', chosenAlt);
+    };
+    wheel.addEventListener('transitionend', onEnd, { once: true });
   }
-}
+
+  spinBtn.addEventListener('click', () => {
+    if (spinning) return;
+    // elegimos un planeta al azar directamente (sin ángulos intermedios)
+    const index = Math.floor(Math.random() * N); // 0..N-1
+    spinToIndex(index);
+  });
+
+  // Para probar un índice concreto:
+  // spinToIndex(0);
+})();

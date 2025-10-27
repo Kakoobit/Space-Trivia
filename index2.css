@@ -100,15 +100,11 @@ body::before{
     z-index: 10;
     display: flex;
     justify-content: center;
-    align-items: center;    
-    font-family: "Bebas Neue", sans-serif;
-    font-weight: 1200;
-    font-style: normal;
+    align-items: center;
     letter-spacing: 0.01em;
     border: none;
     user-select: none;
 }
-
 .container .spinbutton::before{
     content: '';
     position: absolute;
@@ -117,12 +113,17 @@ body::before{
     height: 30px;
 }
 
+
 .spinbutton span {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  color:  #2E294E;
   pointer-events: none;
+  font-size: 28px; 
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 1px; 
 }
     #rocket {
         position: absolute;
@@ -147,6 +148,8 @@ body::before{
   border-radius: 50%;
   background: transparent;
   box-shadow: 0 0 5px #ffffff, 0 0 10px #676767 inset;
+  will-change: transform;
+  transform-origin: 50% 50%;
 }
 
 .stage {                             
@@ -199,14 +202,14 @@ body::before{
   flex: 0 0 auto;
   margin-left: auto;
   margin-left: auto;
-  transform: translate(-120px, -60px); 
+  transform: translate(-140px, -60px); 
 }
 
 /*izqqq*/
 
 .instructions{
   flex: 1 1 420px;           
-  max-width: 560px;
+  max-width: 490px;
   color: #fff;
   background: rgba(46, 41, 78, .55);
   border: 1px solid rgba(255,255,255,.15);
