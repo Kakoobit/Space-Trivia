@@ -23,13 +23,14 @@ html {
 .flexx {
   color: rgb(255, 255, 255);
   background-color: #2E294E; 
-  padding: 16px;
+  padding: 1px 32px;
   align-items: center;
   display: flex;
   justify-content: space-between;
   position: sticky;
   top:0;
 } 
+
   #xd {
     height: auto;
     } 

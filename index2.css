@@ -230,16 +230,16 @@ body::before{
 #pop{
   position: fixed;
   left: 50%;
-  top: 50%;
+  top: 20%;
   transform: translate(-50%, -25%) scale(.95);
-  background: rgba(20,20,35,.92);
+  background: rgba(56, 29, 60, 0.92);
   color: #fff;
   padding: 35px 40px;
-  border-radius: 50px;
+  border-radius: 30px;
   border: 1px solid rgba(255,255,255,.18);
   box-shadow: 0 10px 30px rgba(0,0,0,.35);
   backdrop-filter: blur(3px);
-  font: 700 20px "Bebas Neue", sans-serif;
+  font: 1000 30px "Bebas Neue", sans-serif;
   letter-spacing: .5px;
   display: inline-flex;
   align-items: center;
@@ -247,12 +247,12 @@ body::before{
   opacity: 0;
   pointer-events: none;
   z-index: 3000;
+  filter: drop-shadow(0 0 8px rgba(255,255,255,0.4));
 }
-
 /* animaciones */
 #pop.show{
   animation: pop-in .35s ease-out forwards,
-             pop-out .35s ease-in forwards 2.2s; /* se oculta solo */
+             pop-out .35s ease-in forwards 2.5s;
 }
 
 @keyframes pop-in{
@@ -261,4 +261,34 @@ body::before{
 }
 @keyframes pop-out{
   to{ opacity:0; transform: translate(-50%,-40%) scale(.98); }
+}
+
+#cutscene{
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4000;
+  transition: opacity .45s ease;
+}
+#cutscene.show{
+  opacity: 1;
+  pointer-events: auto;
+}
+#cutscene .cutscene__backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.88);
+  backdrop-filter: blur(6px);
+}
+#cutscene video{
+  position: relative;
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.6);
+  outline: 1px solid rgba(255,255,255,.1);
 }

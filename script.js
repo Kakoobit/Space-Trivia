@@ -18,7 +18,6 @@
   const to0_360 = deg => (deg % 360 + 360) % 360;
   const forwardDelta = (from, to) => to0_360(to - from);
 
-  // === funciones auxiliares ===
   function deg(a) { return a * 180 / Math.PI; }
   function center(el) {
     const r = el.getBoundingClientRect();
@@ -71,11 +70,51 @@
   });
 })();
 
+
 function showPopup(message){
-  const pop = document.getElementById('pop');
+    const pop = document.getElementById('pop');
   const txt = document.getElementById('pop-text');
+  if (!pop || !txt) return;
+
   txt.textContent = `🚀 Let's go to ${message}!`;
   pop.classList.remove('show');
   void pop.offsetWidth;
   pop.classList.add('show');
+
+  const map = {
+    Mercury: 'mercuryask',
+    Venus:   'venusask',
+    Mars:    'marsask',
+    Jupiter: 'jupiterask',
+    Saturn:  'saturnask',
+    Uranus:  'uranusask',
+    Neptune: 'neptuneask'
+  };
+  const redirectUrl = map[message] || 'jupiterask';
+
+  const handleEnd = (e) => {
+    if (e.animationName === 'pop-out') {
+      pop.removeEventListener('animationend', handleEnd);
+      showCutscene('video.mp4', redirectUrl);
+    }
+  };
+  pop.addEventListener('animationend', handleEnd);
+}
+
+function showCutscene(videoSrc, redirectUrl){
+  const layer = document.getElementById('cutscene');
+  const vid   = document.getElementById('cutscene-video');
+  if (!layer || !vid) return;
+
+  vid.src = videoSrc;
+  layer.hidden = false;
+
+  requestAnimationFrame(() => layer.classList.add('show'));
+
+  vid.currentTime = 0;
+  vid.play().catch(()=>{});
+
+  vid.onended = () => {
+    window.location.href = redirectUrl;
+  };
 }
