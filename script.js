@@ -82,13 +82,13 @@ function showPopup(message){
   pop.classList.add('show');
 
   const map = {
-    Mercury: 'mercuryask',
-    Venus:   'venusask',
-    Mars:    'marsask',
-    Jupiter: 'jupiterask',
-    Saturn:  'saturnask',
-    Uranus:  'uranusask',
-    Neptune: 'neptuneask'
+    Mercury: 'mercuryask.html',
+    Venus:   'venusask.html',
+    Mars:    'marsask.html',
+    Jupiter: 'jupiterask.html',
+    Saturn:  'saturnask.html',
+    Uranus:  'uranusask.html',
+    Neptune: 'neptuneask.html'
   };
   const redirectUrl = map[message] || 'jupiterask';
 
