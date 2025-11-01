@@ -59,10 +59,11 @@ body::before{
     content: ""; 
     position: fixed;
     inset: 0;
-    background: url("cabin.png") top center / cover no-repeat;
-    filter: brightness(50%);
+    background: url("../images/cabin.png") top center / cover no-repeat;
+    filter: brightness(30%);
     z-index: -1;
-}
+} 
+
 .flexx {
     box-sizing: border-box;
     position: fixed;      
@@ -129,12 +130,29 @@ h1{
     text-decoration: none;
     color: rgb(255, 255, 255);
     text-shadow: 2px 2px 10px #000000;
-    background: linear-gradient(90deg, rgb(143, 35, 35) 0%, rgb(143, 43, 43)100%);
+    background: linear-gradient(90deg, #2E294E 0%, rgb(143, 43, 43)100%);
 }
 
 .btn:hover{
     cursor: pointer;
-    box-shadow:0 0.4rem 1.4rem rgb(82, 27, 27);
+    box-shadow:0 0.4rem 1.4rem rgb(60, 21, 21);
     transition: transform 150ms;
     transform: scale(1.03)
 }
+
+.btn[disabled]:hover{
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+#highscore-btn{
+    background: linear-gradient(90deg, #2E294E 0%, rgb(143, 43, 43)100%);
+
+}
+
+#highscore-btn:hover{
+    box-shadow:0 0.4rem 1.4rem rgb(23, 11, 11);
+}
+
+

@@ -59,7 +59,7 @@ body::before{
     content: ""; 
     position: fixed;
     inset: 0;
-    background: url("stars.jpeg") top center / cover no-repeat;
+    background: url("/images/stars.jpeg") top center / cover no-repeat;
     z-index: -1;
 }
 .flexx {
@@ -277,6 +277,7 @@ body::before{
   opacity: 1;
   pointer-events: auto;
 }
+
 #cutscene .cutscene__backdrop{
   position: absolute;
   inset: 0;
