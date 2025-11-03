@@ -155,4 +155,40 @@ h1{
     box-shadow:0 0.4rem 1.4rem rgb(23, 11, 11);
 }
 
+.end-form-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 30rem;
+} 
+
+input{
+  margin-bottom: 1rem;
+  width: 20rem;
+  padding: 1.5rem;
+  font-size: 1.8rem;
+  border: none;
+  box-shadow: 0 0.1rem 1.4rem 0 rgba(0,0,0,0.2);
+}
+
+input::placeholder{
+    color: gray;
+}
+
+#username{
+  margin-bottom: 3rem;
+  width: 100%;
+  outline: none
+}
+
+#end-text {
+  font-size: 2.4rem;
+  color: white;
+  text-align: center;
+}
+
+#saveScoreBtn{
+border: none;
+}
 
