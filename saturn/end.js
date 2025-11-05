@@ -9,13 +9,13 @@ const MAX_HIGH_SCORES =5;
 
 finalScore.innerText = mostRecentScore;
 
-suername.addEventListener("keyup", () => {
+username.addEventListener("keyup", () => {
 
-saveScoreBtn.disables= !username.value
+saveScoreBtn.disabled= !username.value.trim()
 
 })
 
-saveHighScore = e => {
+const saveHighScore = e => {
     e.preventDefault();
     const score = {
         score: mostRecentScore,

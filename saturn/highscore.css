@@ -11,3 +11,10 @@ body{
     font-size: 2rem;
     margin: 0.5rem 0;
 }
+
+#highScoresList {
+    font-size: 1.4rem;
+    border-style: groove;
+    border-radius: 0.5rem;
+}
+

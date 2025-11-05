@@ -6,5 +6,3 @@ highScoresList.innerHTML=
         return `<li class="high-scores">${score.name} - ${score.score}</li>`;
     }).join ('');
 
-    
-
