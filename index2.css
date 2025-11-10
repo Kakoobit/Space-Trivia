@@ -59,7 +59,7 @@ body::before{
     content: ""; 
     position: fixed;
     inset: 0;
-    background: url("/images/stars.jpeg") top center / cover no-repeat;
+    background: url("images/stars.jpeg") top center / cover no-repeat;
     z-index: -1;
 }
 .flexx {

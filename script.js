@@ -59,7 +59,6 @@
 
       showPopup(planetName);
     };
-
     wheel.addEventListener('transitionend', onEnd, { once: true });
   }
 
@@ -72,7 +71,7 @@
 
 
 function showPopup(message){
-    const pop = document.getElementById('pop');
+  const pop = document.getElementById('pop');
   const txt = document.getElementById('pop-text');
   if (!pop || !txt) return;
 
@@ -88,9 +87,9 @@ function showPopup(message){
     Jupiter: 'jupiter/jupiterask.html',
     Saturn:  'saturn/saturnask.html',
     Uranus:  'uranus/uranusask.html',
-    Neptune: 'neputune/neptuneask.html'
+    Neptune: 'neptune/neptuneask.html'
   };
-  const redirectUrl = map[message] || 'jupiterask';
+  const redirectUrl = map[message] || 'jupiter/jupiterask.html';
 
   const handleEnd = (e) => {
     if (e.animationName === 'pop-out') {
@@ -102,8 +101,10 @@ function showPopup(message){
 }
 
 function showCutscene(videoSrc, redirectUrl){
-  const layer = document.getElementById('cutscene');
-  const vid   = document.getElementById('cutscene-video');
+  const layer  = document.getElementById('cutscene');
+  const vid    = document.getElementById('cutscene-video');
+  const skipBtn = document.getElementById('skipBtn'); 
+
   if (!layer || !vid) return;
 
   vid.src = videoSrc;
@@ -117,4 +118,12 @@ function showCutscene(videoSrc, redirectUrl){
   vid.onended = () => {
     window.location.href = redirectUrl;
   };
+
+ 
+  if (skipBtn) {
+    skipBtn.onclick = () => {
+      window.location.href = redirectUrl;
+    };
+  }
 }
+
