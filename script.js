@@ -59,6 +59,7 @@
 
       showPopup(planetName);
     };
+
     wheel.addEventListener('transitionend', onEnd, { once: true });
   }
 
@@ -94,7 +95,7 @@ function showPopup(message){
   const handleEnd = (e) => {
     if (e.animationName === 'pop-out') {
       pop.removeEventListener('animationend', handleEnd);
-      showCutscene('video.mp4', redirectUrl);
+      showCutscene('video.mp4', redirectUrl); 
     }
   };
   pop.addEventListener('animationend', handleEnd);
@@ -103,13 +104,14 @@ function showPopup(message){
 function showCutscene(videoSrc, redirectUrl){
   const layer  = document.getElementById('cutscene');
   const vid    = document.getElementById('cutscene-video');
-  const skipBtn = document.getElementById('skipBtn'); 
+  const skipBtn = document.getElementById('skipBtn');
 
   if (!layer || !vid) return;
 
   vid.src = videoSrc;
   layer.hidden = false;
 
+  
   requestAnimationFrame(() => layer.classList.add('show'));
 
   vid.currentTime = 0;
@@ -119,11 +121,9 @@ function showCutscene(videoSrc, redirectUrl){
     window.location.href = redirectUrl;
   };
 
- 
   if (skipBtn) {
     skipBtn.onclick = () => {
       window.location.href = redirectUrl;
     };
   }
 }
-

@@ -87,7 +87,6 @@ body::before{
     justify-content: center;
     align-items: center;
     margin:150px auto 0;
-    
 }
 
 .container .spinbutton {
@@ -219,6 +218,7 @@ body::before{
   justify-content: center; 
   transform: translateX(60px);
 }
+
 .instructions h3{
   margin: 0 0 10px;
   font-family: "Bebas Neue", sans-serif;
@@ -291,4 +291,25 @@ body::before{
   border-radius: 14px;
   box-shadow: 0 20px 60px rgba(0,0,0,.6);
   outline: 1px solid rgba(255,255,255,.1);
+}
+
+#skipBtn {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 30px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  z-index: 4100;
+}
+
+#skipBtn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  color: #000;
 }

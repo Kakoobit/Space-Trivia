@@ -26,6 +26,19 @@
         </nav>
     </h2>
   
+  <div id="cutscene" hidden>
+  <div class="cutscene__backdrop"></div>
+
+  <video id="cutscene-video" autoplay>
+    <source src="" type="video/mp4" />
+    Tu navegador no soporta video HTML5.
+  </video>
+
+  <button id="skipBtn">
+    Skip ⏩
+  </button>
+</div>
+
     <div id="cutscene" hidden>
       <div class="cutscene__backdrop"></div>
       <video id="cutscene-video" playsinline></video>
@@ -69,13 +82,6 @@
                 </div>
             </div>
        </div>
-        <button id="skipBtn"
-    style="position:absolute; top:20px; right:20px; 
-           background-color:rgba(0,0,0,0.6); color:white;
-           border:none; padding:10px 20px; border-radius:8px;
-           font-size:16px; cursor:pointer;">
-    Skip ⏩
-  </button>
      </div>
      <script src="script.js"></script>
    </body>
